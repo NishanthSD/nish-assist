@@ -1,0 +1,15 @@
+{
+  "name": "nish-assist",
+  "version": "1.0.0",
+  "description": "My nodejs backend to do all the work needed for my android app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nishanth S D",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongodb": "6.16"
+  }
+}
