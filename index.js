@@ -5,6 +5,20 @@ const uri = "mongodb+srv://nishanthsdedu:27102003@cluster0.yhrsj.mongodb.net/?re
 
 const client = new MongoClient(uri);
 
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+    var ret = run();
+    if (ret == 1) {
+        res.send("Connected to MongoDB successfully!");
+    } else {
+        res.send("Failed to connect to MongoDB.");
+    }
+}
+);
+
+
 async function run() {
     try {
         await client.connect();
@@ -12,10 +26,13 @@ async function run() {
         const texts = db.collection("texts");
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
+        return 0;
     } finally {
         await client.close();
+        return 1;
     }
 }
 
-
-run() 
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
